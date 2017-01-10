@@ -150,6 +150,13 @@ Using a for-loop, iterate through the Array stored at `oopsArray` backwards. Con
 ['what', 'nope', 'for', 'nope', 'down', 'nope', 'turn']
 */
 
+reverseOopsArray = [];
+
+for (i=1;i<oopsArray.length+1;i++) {
+	reverseOopsArray.push(oopsArray[oopsArray.length-i]);
+}
+
+console.log(reverseOopsArray);
 
 /* 9) Siesta Time
 Declare a variable named `napSchedule` and assign its value to the following array: `[false, false, true, false, true, true]`
