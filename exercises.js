@@ -265,6 +265,22 @@ Write a function that will capitalize the first letter in each word in the phras
 
 var myWay = "i've lived a life that's full, i've traveled each and every highway. but more, much more than this. i did it my way.";
 
+function capFirstLetter(string) {
+	var lastCharacter = " ";
+	var newString = "";
+	for (i=0;i<string.length;i++) {
+		if (lastCharacter === " ") {
+			newString += string.charAt(i).toUpperCase();
+		}
+		else {
+			newString += string.charAt(i);
+		}
+		lastCharacter = string.charAt(i);
+	}
+	return newString;
+}
+
+console.log(capFirstLetter(myWay));
 
 /* 14) Back to School
 Declare a variable named `currentCohort` and set it's value to be this [array found here](https://gist.github.com/sgnl/e40879b2249e06ca7811).
