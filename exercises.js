@@ -216,20 +216,22 @@ Write a function that will iterate through the string value and return the longe
 var topQuote = "I reject your reality and substitute my own.";
 
 function longestWord(quote) {
-	var wordLength = 0;
-	var longestWord = "";
-	for (i=0;i<topQuote.length;i++) {
-		if (quote.charAt(i) === " ") {
-			if (wordLength > longestWord.length) {
-				longestWord = quote.slice(i-wordLength, i);
+
+	var wordLength = 0; // Placeholder for letter incrementer.
+	var longestWord = ""; // Placeholder for longest word.
+
+	for (i=0;i<topQuote.length;i++) { // Loop until we hit the end of the quote.
+		if (quote.charAt(i) === " ") { // If the character being read is a space.
+			if (wordLength > longestWord.length) { // If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
+				longestWord = quote.slice(i-wordLength, i); // Sets newest longest word using slice().
 			}
-			wordLength = 0;
+			wordLength = 0; // Sets letter count to 0 at the end of each word.
 		}
 		else {
-			wordLength++;
+			wordLength++; // Increments the letter count for each word.
 		}
 	}
-	return longestWord;
+	return longestWord; // Returns the longest word.
 }
 
 console.log(longestWord(topQuote));
