@@ -24,6 +24,9 @@ Write a for-loop that will iterate through the topFive array below and console.l
 
 var topFive = ["Closer", "Starboy", "I Feel It Coming", "Let Me Love You", "24K Magic"];
 
+for (i=0;i<topFive.length;i++) {
+	console.log("This week's chat buster is: " + "'" + topFive[i] + ".'");
+}
 
 /* 3) Dead Presidents
 Declare a variable named `presidents` and assign it to an array containing the following Presidents: Washington, Adams, Jefferson, Madison and Monroe.
