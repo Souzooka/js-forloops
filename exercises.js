@@ -113,6 +113,18 @@ Write a for-loop that will sum up odd numbers to the `oddSum` variable. We want 
 Console.log your results.
 */
   
+var oddNumbersCount = 0;
+var sum = 0;
+
+for (i=1;oddNumbersCount<=50;i++) {
+	if (i % 2 === 1) {
+		oddNumbersCount++;
+		sum += i;
+	}
+}
+
+console.log(sum);
+
 
 /* 7) Opps There It is
 Declare a variable named `oopsArray` and assign its to the following array: `[ 'turn' , , 'down' , , 'for' , , 'what' ]`.
@@ -120,6 +132,16 @@ Note that every odd index value in `oopsArray` is currently `undefined`. Using a
 
 [ 'turn' , 'nope' , 'down' , 'nope' , 'for' , 'nope' , 'what' ]
 */
+
+var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
+
+for (i=0;i<oopsArray.length;i++) {
+	if (i % 2 === 1) {
+		oopsArray[i] = "nope";
+	}
+}
+
+console.log(oopsArray);
 
 
 /* 8) Is It There Opps
