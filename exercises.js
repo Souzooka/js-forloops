@@ -9,6 +9,8 @@ Write a for-loop that will iterate through 20 numbers (starting at 1 and ending 
 "Now serving 20."
 */
 
+var i = null;
+
 for (i=1;i<21;i++) {
 	console.log("Ticket Generator: Now Serving " + i);
 }
@@ -68,6 +70,23 @@ Write a for-loop that concatenates a Number value into that string on each itera
 4-A) Create a function called `appendToString` and have it produce the same result as above. Console.log your results.
 */
 
+var stringOfNumbers = "";
+
+for (i=10;i<21;i++) {
+	stringOfNumbers += (i + " ");
+}
+
+console.log(stringOfNumbers);
+
+function appendToString() {
+	var newStringOfNumbers = "";
+	for (i=10;i<21;i++) {
+		newStringOfNumbers += (i + " ");
+	}
+	return newStringOfNumbers;
+}
+
+console.log(appendToString());
 
 /* 5) Even Stevens
 Declare a variable named `evenNumArr` and assign its value to an empty array. 
@@ -75,6 +94,16 @@ Declare a variable named `evenNumArr` and assign its value to an empty array.
 Write a for-loop that will push even numbers to the `evenNumArr` array. We want to push 50 even even numbers starting from 0.
 Console.log your results.
 */
+
+var evenNumArr = [];
+
+for (i=0;evenNumArr.length<=50;i++) {
+	if (i % 2 === 0) {
+		evenNumArr.push(i);
+	}
+}
+
+console.log(evenNumArr);
 
 
 /* 6) Up the Odds
