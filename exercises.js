@@ -168,6 +168,20 @@ Next, write a function named `nap`. This function takes in a single parameter: `
 Inside of this function write a for-loop that will iterate through the `napSchedule` array and console.log the message: `ZzZzZzZz` if the schedule is `true`, otherwise the it will console.log the message: `Gotta get coding!` if the schedule is `false`.
 */
 
+var napSchedule = [false, false, true, false, true, true];
+
+function nap(schedule) {
+	for (i=0;i<napSchedule.length;i++) {
+		if (schedule[i]) {
+			console.log("ZzZzZzZz");
+		}
+		else {
+			console.log("Gotta get coding!");
+		}
+	}
+}
+
+nap(napSchedule);
 
 /* 10) Copy Pasta
 Declare a variable named `valuesArray` and assign it's value to be an array: `[99, 66, 829, 1941, 8, 76]`.
