@@ -213,6 +213,27 @@ Declare a variable named `topQuote` and assign it to a String value of your favo
 Write a function that will iterate through the string value and return the longest word in that quote. Console.log your result.
 */
 
+var topQuote = "I reject your reality and substitute my own.";
+
+function longestWord(quote) {
+	var wordLength = 0;
+	var longestWord = "";
+	for (i=0;i<topQuote.length;i++) {
+		if (quote.charAt(i) === " ") {
+			if (wordLength > longestWord.length) {
+				longestWord = quote.slice(i-wordLength, i);
+			}
+			wordLength = 0;
+		}
+		else {
+			wordLength++;
+		}
+	}
+	return longestWord;
+}
+
+console.log(longestWord(topQuote));
+
 /* 12) Puppet Master
 Declare a variable named `miscStorage` set it's value to be: `[ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ]`
 Write a function named `generateArrayOfStrings` which takes a single argument `storage`. This function will return a new Array with only `String` values inside of it.
