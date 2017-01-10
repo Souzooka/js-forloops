@@ -54,12 +54,14 @@ var presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe"];
 
 for (i=0;i<presidents.length;i++) {
 	console.log("The value at " + i + " is " + presidents[i] + ".");
-	leaders(presidents[i]);
 }
 
 function leaders(person) {
-	console.log("President " + person + " was a great leader.");
+	for (i=0;i<presidents.length;i++)
+	console.log("President " + person[i] + " was a great leader.");
 }
+
+leaders(presidents);
 
 
 /* 4) Line Number
