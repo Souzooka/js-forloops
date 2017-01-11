@@ -300,39 +300,40 @@ Write a function that will iterate through the string value and return the longe
 
 var topQuote = "I reject your reality and substitute my own.";
 
-function longestWord(quote) {
-
-	if (typeof quote === "string") {
-		var notEmptyQuote = false;
-		for (i=0;i<quote.length;i++) {
-			if (quote.charAt(i) !== " ") {
+function notEmptyString(string) {
+	if (typeof string === "string") {
+	var notEmptyQuote = false;
+		for (i=0;i<string.length;i++) {
+			if (string.charAt(i) !== " ") {
 				notEmptyQuote = true;
 				break;
 			}
 		}
 		if (notEmptyQuote) {
-			var wordLength = 0; 									// Placeholder for letter incrementer.
-			var longestWord = ""; 									// Placeholder for longest word.
-			for (i=0;i<topQuote.length;i++) { 						// Loop until we hit the end of the quote.
-				if (quote.charAt(i) === " ") { 						// If the character being read is a space.
-					if (wordLength > longestWord.length) { 			// If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
-						longestWord = quote.slice(i-wordLength, i); // Sets newest longest word using slice().
-					}
-					wordLength = 0; 								// Sets letter count to 0 at the end of each word.
+			return true;
+		}
+	}
+	return false;
+}
+
+function longestWord(quote) {
+	if (notEmptyString(quote)) {
+		var wordLength = 0; 									// Placeholder for letter incrementer.
+		var longestWord = ""; 									// Placeholder for longest word.
+		for (i=0;i<topQuote.length;i++) { 						// Loop until we hit the end of the quote.
+			if (quote.charAt(i) === " ") { 						// If the character being read is a space.
+				if (wordLength > longestWord.length) { 			// If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
+					longestWord = quote.slice(i-wordLength, i); // Sets newest longest word using slice().
 				}
-				else {
-					wordLength++; 									// Increments the letter count for each word.
-				}
+				wordLength = 0; 								// Sets letter count to 0 at the end of each word.
 			}
-			return longestWord; 									// Returns the longest word.
+			else {
+				wordLength++; 									// Increments the letter count for each word.
+			}
 		}
-		else {
-			return "longestWord: Please do not enter an empty quote or a quote which consists of nothing but spaces.";
-		}
+		return longestWord; 									// Returns the longest word.
 	}
-	else {
-		return "longestWord: Please enter a string.";
-	}
+	return "longestWord: Please enter a non-empty string.";
 }
 
 
@@ -378,34 +379,23 @@ Write a function that will capitalize the first letter in each word in the phras
 var myWay = "i've lived a life that's full, i've traveled each and every highway. but more, much more than this. i did it my way.";
 
 function capFirstLetter(string) {
-	if (typeof string === "string") {
-		var notEmptyQuote = false;
+	if (notEmptyString(string)) {
+		var lastCharacter = " ";
+		var newString = "";
 		for (i=0;i<string.length;i++) {
-			if (string.charAt(i) !== " ") {
-				notEmptyQuote = true;
-				break;
+			if (lastCharacter === " ") {
+				newString += string.charAt(i).toUpperCase();
 			}
-		}
-		if (notEmptyQuote) {
-			var lastCharacter = " ";
-			var newString = "";
-			for (i=0;i<string.length;i++) {
-				if (lastCharacter === " ") {
-					newString += string.charAt(i).toUpperCase();
-				}
-				else {
-					newString += string.charAt(i);
-				}
-				lastCharacter = string.charAt(i);
+			else {
+				newString += string.charAt(i);
 			}
-			return newString;
+			lastCharacter = string.charAt(i);
 		}
-		else {
-			return "capFirstLetter: Please do not enter an empty quote or a quote which consists of nothing but spaces.";
-		}
+		return newString;
+
 	}
 	else {
-		return "capFirstLetter: Please enter a string.";
+		return "capFirstLetter: Please enter a non-empty string.";
 	}
 }
 
