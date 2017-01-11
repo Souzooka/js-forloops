@@ -311,20 +311,20 @@ function longestWord(quote) {
 			}
 		}
 		if (notEmptyQuote) {
-			var wordLength = 0; // Placeholder for letter incrementer.
-			var longestWord = ""; // Placeholder for longest word.
-			for (i=0;i<topQuote.length;i++) { // Loop until we hit the end of the quote.
-				if (quote.charAt(i) === " ") { // If the character being read is a space.
-					if (wordLength > longestWord.length) { // If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
+			var wordLength = 0; 									// Placeholder for letter incrementer.
+			var longestWord = ""; 									// Placeholder for longest word.
+			for (i=0;i<topQuote.length;i++) { 						// Loop until we hit the end of the quote.
+				if (quote.charAt(i) === " ") { 						// If the character being read is a space.
+					if (wordLength > longestWord.length) { 			// If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
 						longestWord = quote.slice(i-wordLength, i); // Sets newest longest word using slice().
 					}
-					wordLength = 0; // Sets letter count to 0 at the end of each word.
+					wordLength = 0; 								// Sets letter count to 0 at the end of each word.
 				}
 				else {
-					wordLength++; // Increments the letter count for each word.
+					wordLength++; 									// Increments the letter count for each word.
 				}
 			}
-			return longestWord; // Returns the longest word.
+			return longestWord; 									// Returns the longest word.
 		}
 		else {
 			return "longestWord: Please do not enter an empty quote or a quote which consists of nothing but spaces.";
@@ -350,13 +350,23 @@ Write a function named `generateArrayOfStrings` which takes a single argument `s
 var miscStorage = [ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ];
 
 function generateArrayOfStrings(storage) {
-	var newArray = [];
-	for (i=0;i<storage.length;i++) {
-		if (typeof miscStorage[i] === "string") {
-			newArray.push(storage[i]);
+	if (Array.isArray(storage) && storage.length !== 0) {
+		var newArray = [];
+		for (i=0;i<storage.length;i++) {
+			if (typeof miscStorage[i] === "string") {
+				newArray.push(storage[i]);
+			}
+		}
+		if (newArray.length !== 0) {
+			return newArray;
+		}
+		else {
+			return "There are no strings in this array.";
 		}
 	}
-	return newArray;
+	else {
+		return "generateArrayOfStrings: Please use a non-empty array.";
+	}
 }
 
 console.log(generateArrayOfStrings(miscStorage));
@@ -368,18 +378,35 @@ Write a function that will capitalize the first letter in each word in the phras
 var myWay = "i've lived a life that's full, i've traveled each and every highway. but more, much more than this. i did it my way.";
 
 function capFirstLetter(string) {
-	var lastCharacter = " ";
-	var newString = "";
-	for (i=0;i<string.length;i++) {
-		if (lastCharacter === " ") {
-			newString += string.charAt(i).toUpperCase();
+	if (typeof string === "string") {
+		var notEmptyQuote = false;
+		for (i=0;i<string.length;i++) {
+			if (string.charAt(i) !== " ") {
+				notEmptyQuote = true;
+				break;
+			}
+		}
+		if (notEmptyQuote) {
+			var lastCharacter = " ";
+			var newString = "";
+			for (i=0;i<string.length;i++) {
+				if (lastCharacter === " ") {
+					newString += string.charAt(i).toUpperCase();
+				}
+				else {
+					newString += string.charAt(i);
+				}
+				lastCharacter = string.charAt(i);
+			}
+			return newString;
 		}
 		else {
-			newString += string.charAt(i);
+			return "capFirstLetter: Please do not enter an empty quote or a quote which consists of nothing but spaces.";
 		}
-		lastCharacter = string.charAt(i);
 	}
-	return newString;
+	else {
+		return "capFirstLetter: Please enter a string.";
+	}
 }
 
 console.log(capFirstLetter(myWay));
@@ -435,14 +462,14 @@ var currentCohort = [
 
 function graduateAndSetNewClass(cohort) {
 	for (i=0;i<cohort.length;i++) {
-		if (cohort[i].enrolled === true) {
-			cohort[i].graduated = true;
-		}
-		else if (cohort[i].enrolled === false) {
-			cohort[i].enrolled = true;
-		}
+			if (cohort[i].enrolled === true) {
+				cohort[i].graduated = true;
+			}
+			else if (cohort[i].enrolled === false) {
+				cohort[i].enrolled = true;
+			}
 	}
-	console.log(cohort);
+	return cohort;
 }
 
-graduateAndSetNewClass(currentCohort);
+console.log(graduateAndSetNewClass(currentCohort));
