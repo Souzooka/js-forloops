@@ -9,7 +9,7 @@ Write a for-loop that will iterate through 20 numbers (starting at 1 and ending 
 "Now serving 20."
 */
 
-var i = null;
+var i = null; // placeholder incrementer
 
 for (i=1;i<21;i++) {
 	console.log("Ticket Generator: Now Serving " + i);
@@ -26,8 +26,13 @@ Write a for-loop that will iterate through the topFive array below and console.l
 
 var topFive = ["Closer", "Starboy", "I Feel It Coming", "Let Me Love You", "24K Magic"];
 
-for (i=0;i<topFive.length;i++) {
-	console.log("This week's chat buster is: " + "'" + topFive[i] + ".'");
+if (Array.isArray(topFive)) {
+	for (i=0;i<topFive.length;i++) {
+		console.log("This week's chat buster is: " + "'" + topFive[i] + ".'");
+	}
+}
+else {
+	console.log("topFive: Please use an array.");
 }
 
 /* 3) Dead Presidents
@@ -52,13 +57,23 @@ This function will iterate through the person parameter and console.log the foll
 
 var presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe"];
 
-for (i=0;i<presidents.length;i++) {
-	console.log("The value at " + i + " is " + presidents[i] + ".");
+if (Array.isArray(presidents)) {
+	for (i=0;i<presidents.length;i++) {
+		console.log("The value at " + i + " is " + presidents[i] + ".");
+	}
+}
+else {
+	console.log("presdients: Please use an array.");
 }
 
 function leaders(person) {
-	for (i=0;i<presidents.length;i++)
-	console.log("President " + person[i] + " was a great leader.");
+	if (Array.isArray(presidents)) {
+		for (i=0;i<presidents.length;i++)
+		console.log("President " + person[i] + " was a great leader.");
+	}
+	else {
+		console.log("leaders: Please enter an array.");
+	}
 }
 
 leaders(presidents);
@@ -74,11 +89,17 @@ Write a for-loop that concatenates a Number value into that string on each itera
 
 var stringOfNumbers = "";
 
-for (i=10;i<21;i++) {
-	stringOfNumbers += (i + " ");
+if (typeof stringOfNumbers === "string" && stringOfNumbers.length === 0) {
+	for (i=10;i<21;i++) {
+		stringOfNumbers += (i + " ");
+	}
+	console.log(stringOfNumbers);
 }
+else {
+	console.log("Line Number: Please make sure stringOfNumbers is an empty string.")
+;}
 
-console.log(stringOfNumbers);
+
 
 function appendToString() {
 	var newStringOfNumbers = "";
@@ -99,10 +120,15 @@ Console.log your results.
 
 var evenNumArr = [];
 
-for (i=0;evenNumArr.length<=50;i++) {
-	if (i % 2 === 0) {
-		evenNumArr.push(i);
+if (Array.isArray(evenNumArr) && evenNumArr.length === 0) {
+	for (i=0;evenNumArr.length<=50;i++) {
+		if (i % 2 === 0) {
+			evenNumArr.push(i);
+		}
 	}
+}
+else {
+	console.log("Even Stevens: Please make sure evenNumArr is an empty array.");
 }
 
 console.log(evenNumArr);
@@ -116,16 +142,42 @@ Console.log your results.
 */
   
 var oddNumbersCount = 0;
-var sum = 0;
+var oddSum = 0;
 
+if (oddNumbersCount === 0 && oddSum === 0) {
+	for (i=1;oddNumbersCount<=50;i++) {
+		if (i % 2 === 1) {
+			oddNumbersCount++;
+			oddSum += i;
+		}
+	}
+	console.log(oddSum);
+}
+else {
+	console.log("Up the Odds: Please make sure the variables oddNumbersCount and oddSum are numbers with the value 0.");
+}
+
+
+
+/* Alternate solution
+
+var oddNumbersCount = 0;
+var oddSum = 0;
+
+if (!(oddNumbersCount === 0 && oddSum === 0)) {
+	oddNumbersCount = 0; // Force validation
+	oddSum = 0;
+}
 for (i=1;oddNumbersCount<=50;i++) {
 	if (i % 2 === 1) {
 		oddNumbersCount++;
-		sum += i;
+		oddSum += i;
 	}
 }
+console.log(oddSum);
 
-console.log(sum);
+
+*/
 
 
 /* 7) Opps There It is
@@ -137,13 +189,19 @@ Note that every odd index value in `oopsArray` is currently `undefined`. Using a
 
 var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
 
-for (i=0;i<oopsArray.length;i++) {
-	if (i % 2 === 1) {
-		oopsArray[i] = "nope";
+if (Array.isArray(oopsArray) && oopsArray.length !== 0) {
+	for (i=0;i<oopsArray.length;i++) {
+		if (i % 2 === 1) {
+			oopsArray[i] = "nope";
+		}
 	}
+	console.log(oopsArray);
+}
+else {
+	console.log("Opps There It Is: Please make sure oopsArray is a non-empty array.");
 }
 
-console.log(oopsArray);
+
 
 
 /* 8) Is It There Opps
@@ -160,11 +218,20 @@ for (i=1;i<oopsArray.length+1;i++) {
 
 var reverseOopsArray = [];
 
-for (i=oopsArray.length;i>0;i--) {
-	reverseOopsArray.push(oopsArray[i-1]);
+if (Array.isArray(oopsArray) && oopsArray.length !== 0) {
+	if (Array.isArray(reverseOopsArray) && reverseOopsArray.length === 0) {
+		for (i=oopsArray.length;i>0;i--) {
+			reverseOopsArray.push(oopsArray[i-1]);
+		}
+		console.log(reverseOopsArray);
+	}
+	else {
+		console.log("Is It There Opps: Please make sure reverseOopsArray is an empty array.");
+	}
 }
-
-console.log(reverseOopsArray);
+else {
+	console.log("Is It There Opps: Please make sure oopsArray is a non-empty array.");
+}
 
 /* 9) Siesta Time
 Declare a variable named `napSchedule` and assign its value to the following array: `[false, false, true, false, true, true]`
@@ -225,22 +292,39 @@ var topQuote = "I reject your reality and substitute my own.";
 
 function longestWord(quote) {
 
-	var wordLength = 0; // Placeholder for letter incrementer.
-	var longestWord = ""; // Placeholder for longest word.
-
-	for (i=0;i<topQuote.length;i++) { // Loop until we hit the end of the quote.
-		if (quote.charAt(i) === " ") { // If the character being read is a space.
-			if (wordLength > longestWord.length) { // If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
-				longestWord = quote.slice(i-wordLength, i); // Sets newest longest word using slice().
+	if (typeof quote === "string") {
+		var notEmptyQuote = false;
+		for (i=0;i<quote.length;i++) {
+			if (quote.charAt(i) !== " ") {
+				notEmptyQuote = true;
+				break;
 			}
-			wordLength = 0; // Sets letter count to 0 at the end of each word.
+		}
+		if (notEmptyQuote) {
+			var wordLength = 0; // Placeholder for letter incrementer.
+			var longestWord = ""; // Placeholder for longest word.
+			for (i=0;i<topQuote.length;i++) { // Loop until we hit the end of the quote.
+				if (quote.charAt(i) === " ") { // If the character being read is a space.
+					if (wordLength > longestWord.length) { // If wordLength variable is greater than (not greater than or equal to, so the first of the longest words will be returned) the previous longest word's length, the next line of code is run.
+						longestWord = quote.slice(i-wordLength, i); // Sets newest longest word using slice().
+					}
+					wordLength = 0; // Sets letter count to 0 at the end of each word.
+				}
+				else {
+					wordLength++; // Increments the letter count for each word.
+				}
+			}
+			return longestWord; // Returns the longest word.
 		}
 		else {
-			wordLength++; // Increments the letter count for each word.
+			return "longestWord: Please do not enter an empty quote or a quote which consists of nothing but spaces.";
 		}
 	}
-	return longestWord; // Returns the longest word.
+	else {
+		return "longestWord: Please enter a string.";
+	}
 }
+
 
 console.log(longestWord(topQuote));
 
