@@ -246,13 +246,18 @@ Inside of this function write a for-loop that will iterate through the `napSched
 var napSchedule = [false, false, true, false, true, true];
 
 function nap(schedule) {
-	for (i=0;i<napSchedule.length;i++) {
-		if (schedule[i]) {
-			console.log("ZzZzZzZz");
+	if (Array.isArray(schedule) && schedule.length !== 0) {
+		for (i=0;i<napSchedule.length;i++) {
+			if (schedule[i]) {
+				console.log("ZzZzZzZz");
+			}
+			else {
+				console.log("Gotta get coding!");
+			}
 		}
-		else {
-			console.log("Gotta get coding!");
-		}
+	}
+	else {
+		console.log("nap: Please enter a non-empty array.");
 	}
 }
 
@@ -273,10 +278,15 @@ var valuesArray = [99, 66, 829, 1941, 8, 76];
 var copiedValuesArray = [];
 
 function copyArray(originArray,destinationArray) {
-	for (i=0;i<originArray.length;i++) {
-		destinationArray.push(valuesArray[i]);
+	if (Array.isArray(originArray) && Array.isArray(destinationArray) && originArray.length !== 0) { // No validation for destinationArray.length because the exercise does not specify that it has to be an empty array.
+		for (i=0;i<originArray.length;i++) {
+			destinationArray.push(valuesArray[i]);
+		}
+		return destinationArray;
 	}
-	return destinationArray;
+	else {
+		return "copyArray: Please make sure that originArray is a non-empty array and that destinationArray is an array.";
+	}
 }
 
 console.log(copyArray(valuesArray,copiedValuesArray));
