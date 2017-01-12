@@ -187,10 +187,8 @@ Note that every odd index value in `oopsArray` is currently `undefined`. Using a
 var oopsArray = [ 'turn' , , 'down' , , 'for' , , 'what' ];
 
 if (Array.isArray(oopsArray) && oopsArray.length !== 0) {
-	for (i=0;i<oopsArray.length;i++) {
-		if (i % 2 === 1) {
-			oopsArray[i] = "nope";
-		}
+	for (i=1;i<oopsArray.length;i += 2) {
+		oopsArray[i] = "nope";
 	}
 	console.log(oopsArray);
 }
