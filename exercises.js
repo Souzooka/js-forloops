@@ -396,7 +396,6 @@ var myWay = "i've lived a life that's full, i've traveled each and every highway
 
 function capFirstLetter(str) {
 	if (notEmptyString(str)) {
-		console.log(str.charAt(i-1));
 	    var newStr = "";
 	    for (var i = 0;i<str.length;i++) {
 	        if (str.charAt(i-1) === " " || str.charAt(i-1) === "") {
