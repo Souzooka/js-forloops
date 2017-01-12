@@ -337,7 +337,23 @@ function longestWord(quote) {
 }
 
 
+function longestWord2(quote) {
+	if (notEmptyString(quote)) {
+		var word = null;
+		var longest = 0;
+		quote = quote.split(" ");
+		for (var i = 0;i < quote.length; i++) {
+			if (quote[i].length > longest) {
+				word = quote[i];
+				longest = quote[i].length;
+			}
+		}
+		return word;
+	}
+}
+
 console.log(longestWord(topQuote));
+console.log(longestWord2(topQuote));
 
 /* 12) Puppet Master
 Declare a variable named `miscStorage` set it's value to be: `[ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ]`
@@ -378,21 +394,18 @@ Write a function that will capitalize the first letter in each word in the phras
 
 var myWay = "i've lived a life that's full, i've traveled each and every highway. but more, much more than this. i did it my way.";
 
-function capFirstLetter(string) {
-	if (notEmptyString(string)) {
-		var lastCharacter = " ";
-		var newString = "";
-		for (i=0;i<string.length;i++) {
-			if (lastCharacter === " ") {
-				newString += string.charAt(i).toUpperCase();
-			}
-			else {
-				newString += string.charAt(i);
-			}
-			lastCharacter = string.charAt(i);
-		}
-		return newString;
-
+function capFirstLetter(str) {
+	if (notEmptyString(str)) {
+		console.log(str.charAt(i-1));
+	    var newStr = "";
+	    for (var i = 0;i<str.length;i++) {
+	        if (str.charAt(i-1) === " " || str.charAt(i-1) === "") {
+	            newStr += str.charAt(i).toUpperCase();
+	        } else {
+	            newStr += str.charAt(i);
+	        }
+	    }   
+	    return newStr; 
 	}
 	else {
 		return "capFirstLetter: Please enter a non-empty string.";
