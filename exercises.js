@@ -92,7 +92,7 @@ var stringOfNumbers = "";
 
 if (typeof stringOfNumbers === "string" && stringOfNumbers.length === 0) {
 	for (i=10;i<21;i++) {
-		stringOfNumbers += (i + " ");
+		stringOfNumbers += i;
 	}
 	console.log(stringOfNumbers);
 }
@@ -105,7 +105,7 @@ else {
 function appendToString() {
 	var newStringOfNumbers = "";
 	for (i=10;i<21;i++) {
-		newStringOfNumbers += (i + " ");
+		newStringOfNumbers += i;
 	}
 	return newStringOfNumbers;
 }
