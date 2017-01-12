@@ -122,10 +122,8 @@ Console.log your results.
 var evenNumArr = [];
 
 if (Array.isArray(evenNumArr) && evenNumArr.length === 0) {
-	for (i=0;evenNumArr.length<=50;i++) {
-		if (i % 2 === 0) {
-			evenNumArr.push(i);
-		}
+	for (i=0;evenNumArr.length<=50;i += 2) {
+		evenNumArr.push(i);
 	}
 }
 else {
@@ -146,11 +144,9 @@ var oddNumbersCount = 0;
 var oddSum = 0;
 
 if (oddNumbersCount === 0 && oddSum === 0) {
-	for (i=1;oddNumbersCount<=50;i++) {
-		if (i % 2 === 1) {
-			oddNumbersCount++;
-			oddSum += i;
-		}
+	for (i=1;oddNumbersCount<=50;i += 2) {
+		oddNumbersCount++;
+		oddSum += i;
 	}
 	console.log(oddSum);
 }
