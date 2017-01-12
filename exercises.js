@@ -61,6 +61,7 @@ if (Array.isArray(presidents)) {
 	for (i=0;i<presidents.length;i++) {
 		console.log("The value at " + i + " is " + presidents[i] + ".");
 	}
+	console.log(presidents.length);
 }
 else {
 	console.log("presdients: Please use an array.");
